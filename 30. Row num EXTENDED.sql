@@ -202,6 +202,12 @@ WHERE NumbnerOfPurchases = 2
 /*-----------------------------------------------------------------------------------------*/
                     Q.   What is the RowNum value assigned to the product with the highest price?
                     A.   1
+/*
+-- EXPLANATION: 
+--  If you're asking about the RowNum value for the product with the overall highest price in the entire table, 
+-- the query you provided doesn't directly handle that since it's partitioning by PRODUCT.
+-- However, within each PRODUCT partition, the highest-priced product will always have a Row_Num value of 1. */
+    
 select product price,
 row_number() over (partition by PRODUCT order by PRICE DESC)
 as Row_Num
