@@ -200,4 +200,9 @@ WHERE NumbnerOfPurchases = 2
 -- 'Amica Models & Co.','249',       '10293',    '2004-09-09'    , '2'
 
 /*-----------------------------------------------------------------------------------------*/
-
+                    Q.   What is the RowNum value assigned to the product with the highest price?
+                    A.   1
+select product price,
+row_number() over (partition by PRODUCT order by PRICE DESC)
+as Row_Num
+from products;
